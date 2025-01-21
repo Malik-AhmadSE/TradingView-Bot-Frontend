@@ -24,15 +24,6 @@ export default function HomePage() {
       socket.disconnect();
     };
   }, []);
-  // const symbolData = [
-  //   { symbol: "AAPL", price: "$150.50", type: "Stock", time: "10:30 AM" },
-  //   { symbol: "GOOGL", price: "$2750.00", type: "Stock", time: "10:45 AM" },
-  //   { symbol: "BTC", price: "$34,500.75", type: "Crypto", time: "11:00 AM" },
-  //   { symbol: "ETH", price: "$2,200.30", type: "Crypto", time: "11:15 AM" },
-  //   { symbol: "TSLA", price: "$720.10", type: "Stock", time: "11:30 AM" },
-  //   { symbol: "AMZN", price: "$3,340.20", type: "Stock", time: "11:45 AM" },
-  //   { symbol: "DOGE", price: "$0.25", type: "Crypto", time: "12:00 PM" },
-  // ];
 
   return (
     <div className="flex flex-col gap-16 p-4 sm:p-8">
