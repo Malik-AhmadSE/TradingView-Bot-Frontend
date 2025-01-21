@@ -1,14 +1,19 @@
-import React from 'react'
+import React from "react";
 
 function Header() {
   return (
     <>
-     <h2 className="text-center text-base/7 font-semibold text-indigo-600">TradingView Bot</h2>
-        <p className="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
-          PrimeX -- Algo
-        </p>
+      <h2 className="text-center text-lg font-bold text-white uppercase tracking-wider animate-pulse">
+        TradingView Bot
+      </h2>
+      <p className="mx-auto mt-4 max-w-lg text-center text-3xl font-extrabold text-white drop-shadow-lg sm:text-4xl">
+        PrimeX<span className="text-black"> -- </span>Algo
+      </p>
+      <div className="mt-3 flex justify-center">
+        <div className="h-1 w-28 bg-black rounded-full animate-bounce"></div>
+      </div>
     </>
-  )
+  );
 }
 
-export default Header
+export default Header;
