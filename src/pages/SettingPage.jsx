@@ -28,7 +28,7 @@ const SettingPage = () => {
   };
 
   return (
-    <div className="flex overflow-hidden">
+    <div className="flex overflow-hidden mt-4">
       <Card className="w-full bg-gradient-to-b from-[#00344C] via-[black] to-[#00405B] text-white mt-10">
         <CardHeader
           variant="gradient"
