@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { SideBar, Navbar } from "../components";
+import { SideBar, Navbar, Header } from "../components";
 
 function HomeLayout() {
   return (
@@ -15,6 +15,7 @@ function HomeLayout() {
         </div>
 
         <div className="p-4 sm:p-2">
+          <Header />
           <Outlet />
         </div>
       </div>
