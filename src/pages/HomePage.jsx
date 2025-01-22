@@ -27,22 +27,22 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col gap-16 p-4 sm:p-8">
-      <Card className="w-full bg-gradient-to-b from-[#00344C] via-[black] to-[#00405B] text-white">
+      <Card className="w-full bg-white text-black">
         <CardBody>
-          <Typography variant="h5" color="white" className="mb-2">
+          <Typography variant="h5" color="" className="mb-2">
             Api key:
           </Typography>
-          <Typography className="text-gray-400">Your key here</Typography>
-          <Typography variant="h5" color="white" className="mb-2">
+          <Typography className="text-gray-800">Your key here</Typography>
+          <Typography variant="h5" color="" className="mb-2">
             Secret key:
           </Typography>
-          <Typography className="text-gray-400">
+          <Typography className="text-gray-800">
             Your secret key here
           </Typography>
-          <Typography variant="h5" color="white" className="mb-2">
+          <Typography variant="h5" color="" className="mb-2">
             Trade type:
           </Typography>
-          <Typography className="text-gray-400">
+          <Typography className="text-gray-800">
             Your trade type here
           </Typography>
         </CardBody>
@@ -57,11 +57,11 @@ export default function HomePage() {
         </CardFooter>
       </Card>
 
-      <Card className="w-full bg-gradient-to-b from-[#00344C] via-[black] to-[#00405B] text-white">
+      <Card className="w-full bg-white text-black">
         <CardHeader
           variant="gradient"
-          color="white"
-          className="grid h-14 place-items-center rounded-full"
+          color=""
+          className="grid h-14 place-items-center rounded-full bg-gradient-to-r from-[#B4B8BB] via-[white] to-[#B4B8BB]"
         >
           <Typography color="black" className="text-lg sm:text-xl font-sans">
             Logs
@@ -73,19 +73,19 @@ export default function HomePage() {
               <table className="w-full min-w-max table-auto text-left">
                 <thead>
                   <tr className="bg-gray-50">
-                    <th className="border border-gray-200 px-4 py-2 text-gray-600 font-bold">
+                    <th className="border border-gray-700 px-4 py-2 text-black font-bold">
                       Index
                     </th>
-                    <th className="border border-gray-200 px-4 py-2 text-gray-600 font-bold">
+                    <th className="border border-gray-700 px-4 py-2 text-black font-bold">
                       Symbol
                     </th>
-                    <th className="border border-gray-200 px-4 py-2 text-gray-600 font-bold">
+                    <th className="border border-gray-700 px-4 py-2 text-black font-bold">
                       Price
                     </th>
-                    <th className="border border-gray-200 px-4 py-2 text-gray-600 font-bold">
+                    <th className="border border-gray-700 px-4 py-2 text-black font-bold">
                       Type
                     </th>
-                    <th className="border border-gray-200 px-4 py-2 text-gray-600 font-bold">
+                    <th className="border border-gray-700 px-4 py-2 text-black font-bold">
                       Time
                     </th>
                   </tr>
@@ -94,21 +94,21 @@ export default function HomePage() {
                   {symbolData.map((item, index) => (
                     <tr
                       key={index}
-                      className="hover:bg-gray-50 text-white hover:text-black"
+                      className="hover:bg-gray-50 text-gray-600 hover:text-black"
                     >
-                      <td className="border border-gray-200 px-4 py-2 font-medium">
+                      <td className="border border-gray-700 px-4 py-2 font-medium">
                         {index}
                       </td>
-                      <td className="border border-gray-200 px-4 py-2 font-medium">
+                      <td className="border border-gray-700 px-4 py-2 font-medium">
                         {item.symbol || "Loading..."}
                       </td>
-                      <td className="border border-gray-200 px-4 py-2 font-medium">
+                      <td className="border border-gray-700 px-4 py-2 font-medium">
                         {item.price || "Loading..."}
                       </td>
-                      <td className="border border-gray-200 px-4 py-2 font-medium">
+                      <td className="border border-gray-700 px-4 py-2 font-medium">
                         {item.type || "Loading..."}
                       </td>
-                      <td className="border border-gray-200 px-4 py-2 font-medium">
+                      <td className="border border-gray-700 px-4 py-2 font-medium">
                         {item.time || "Loading..."}
                       </td>
                     </tr>
@@ -117,7 +117,7 @@ export default function HomePage() {
               </table>
             </Card>
           ) : (
-            <Typography className="text-gray-400 text-center">
+            <Typography className="text-gray-800 text-center">
               No logs data available
             </Typography>
           )}

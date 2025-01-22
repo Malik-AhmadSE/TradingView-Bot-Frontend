@@ -6,9 +6,9 @@ import { useNavigate } from "react-router";
 function SideBar() {
   const navigate = useNavigate();
   return (
-    <Card className="hidden sm:block w-64 h-screen bg-gradient-to-b from-[#00344C] via-[black] to-[#00405B] text-white shadow-lg rounded-r-2xl rounded-l-none">
+    <Card className="hidden sm:block w-64 h-screen bg-gradient-to-b from-[#B4B8BB] via-[white] to-[#B4B8BB] text-black shadow-lg rounded-r-2xl rounded-l-none">
       <div className="px-3 pb-3 pt-8">
-        <p className="mt-2 text-lg font-bold tracking-tight text-center text-white">
+        <p className="mt-2 text-lg font-bold tracking-tight text-center text-black">
           Dashboard
         </p>
 
@@ -18,9 +18,9 @@ function SideBar() {
             onClick={() => navigate("/home")}
           >
             <ListItemPrefix>
-              <FaHome className="text-white text-xl" />
+              <FaHome className="text-black text-xl" />
             </ListItemPrefix>
-            <a className="text-white hover:text-gray-400">Home</a>
+            <a className="text-black hover:text-gray-400">Home</a>
           </ListItem>
 
           <ListItem
@@ -28,9 +28,9 @@ function SideBar() {
             onClick={() => navigate("/settings")}
           >
             <ListItemPrefix>
-              <FaCogs className="text-white text-xl" />
+              <FaCogs className="text-black text-xl" />
             </ListItemPrefix>
-            <a className="text-white hover:text-gray-400">Settings</a>
+            <a className="text-black hover:text-gray-400">Settings</a>
           </ListItem>
         </List>
       </div>

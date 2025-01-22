@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import SettingPage from "./pages/SettingPage";
 function App() {
   return (
-    <div className="bg-gray-500">
+    <div className="bg-[#F4F5F5]">
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           <Route path="/" element={<HomePage />} />
