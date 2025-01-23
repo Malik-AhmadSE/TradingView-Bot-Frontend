@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Radio, Form, Input } from "antd";
-import Alerts from "../components/Alerts";
 import {
   Button,
   Card,
@@ -8,20 +7,22 @@ import {
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
+import { Message } from "../components";
 
 const SettingPage = () => {
   const [data, setData] = useState({});
-  const [alert, setAlert] = useState(null); // To store the alert message
+  const [alert, setAlert] = useState(null);
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/getkeys');
+        const response = await fetch("http://localhost:5000/api/getkeys");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const result = await response.json();
-        setData(result);  
+        setData(result);
         console.log(result);
       } catch (error) {
         setAlert({
@@ -32,22 +33,22 @@ const SettingPage = () => {
       }
     };
 
-    fetchData();  
+    fetchData();
   }, []);
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    const apiUrl = 'http://localhost:5000/api/postkey';
+    const apiUrl = "http://localhost:5000/api/postkey";
     fetch(apiUrl, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
     })
-      .then((response) => response.json())  
+      .then((response) => response.json())
       .then((data) => {
-        console.log('Success:', data);  
+        console.log("Success:", data);
         setAlert({
           message: "Success",
           description: "API Key added successfully",
@@ -77,6 +78,11 @@ const SettingPage = () => {
       api_sec: "",
       type: "spot",
     });
+  };
+
+  const handleNotification = () => {
+    console.log("Setting notification");
+    setShowNotification(true);
   };
 
   return (
@@ -180,9 +186,16 @@ const SettingPage = () => {
             </div>
           )}
         </CardBody>
-        
       </Card>
-      {alert && <Alerts message={alert.message} description={alert.description} type={alert.type} />}
+      {/* {alert && <Alerts message={alert.message} description={alert.description} type={alert.type} />} */}
+      {alert && (
+        <Message
+          message={alert.message}
+          description={alert.description}
+          type={alert.type}
+          placement="topRight"
+        />
+      )}
     </div>
   );
 };
