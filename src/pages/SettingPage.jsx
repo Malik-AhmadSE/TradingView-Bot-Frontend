@@ -187,7 +187,6 @@ const SettingPage = () => {
           )}
         </CardBody>
       </Card>
-      {/* {alert && <Alerts message={alert.message} description={alert.description} type={alert.type} />} */}
       {alert && (
         <Message
           message={alert.message}

@@ -1,30 +1,23 @@
-import React from "react";
-import { RadiusUprightOutlined } from "@ant-design/icons";
-import { Button, notification, Space } from "antd";
+import React, { useEffect } from "react";
+import { notification, Space } from "antd";
 
 const Message = ({ message, description, type, placement = "topRight" }) => {
   const [api, contextHolder] = notification.useNotification();
 
-  const openNotification = () => {
-    api[type || "info"]({
-      message,
-      description,
-      placement,
-    });
-  };
+  useEffect(() => {
+    if (message) {
+      api[type || "info"]({
+        message,
+        description,
+        placement,
+      });
+    }
+  }, [message, description, type, placement, api]);
 
   return (
     <>
       {contextHolder}
-      <Space>
-        <Button
-          type="primary"
-          onClick={openNotification}
-          icon={<RadiusUprightOutlined />}
-        >
-          {placement}
-        </Button>
-      </Space>
+      <Space />
     </>
   );
 };
