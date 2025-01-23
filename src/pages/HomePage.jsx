@@ -13,7 +13,7 @@ export default function HomePage() {
   const [symbolData, setSymbolData] = useState([]);
 
   useEffect(() => {
-    const socket = io("https://f114-39-62-220-60.ngrok-free.app/");
+    const socket = io("https:localhost:5000");
 
     socket.on("connect", () => console.log("Socket.IO connection established"));
     socket.on("data", (data) => setSymbolData(data));
