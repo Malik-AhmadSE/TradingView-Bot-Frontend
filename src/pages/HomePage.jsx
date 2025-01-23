@@ -11,12 +11,29 @@ import {
 
 export default function HomePage() {
   const [symbolData, setSymbolData] = useState([]);
-
+  const [data, setData] = useState({});
   useEffect(() => {
-    const socket = io("https:localhost:5000");
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/getkeys");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }else{
+        const result = await response.json();
+        setData(result.result);
+        console.log(result);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const socket = io("http://localhost:5000");
     socket.on("connect", () => console.log("Socket.IO connection established"));
-    socket.on("data", (data) => setSymbolData(data));
+    socket.on("data", (data) => {setSymbolData(data.data)});
     socket.on("error", (error) => console.error("Socket.IO error:", error));
     socket.on("disconnect", () => console.log("Socket.IO connection closed"));
 
@@ -32,18 +49,22 @@ export default function HomePage() {
           <Typography variant="h5" color="" className="mb-2">
             Api key:
           </Typography>
-          <Typography className="text-gray-800">Your key here</Typography>
+          <Typography className="text-gray-800">
+            {data.api_key ? data.api_key : "Your key here"}
+          </Typography>
+
           <Typography variant="h5" color="" className="mb-2">
             Secret key:
           </Typography>
           <Typography className="text-gray-800">
-            Your secret key here
+            {data.api_sec ? data.api_sec : "Your secret key here"}
           </Typography>
+
           <Typography variant="h5" color="" className="mb-2">
             Trade type:
           </Typography>
           <Typography className="text-gray-800">
-            Your trade type here
+            {data.type ? data.type : "Your Trade Type Here"}
           </Typography>
         </CardBody>
         <CardFooter className="pt-0 text-center">
@@ -80,6 +101,9 @@ export default function HomePage() {
                       Symbol
                     </th>
                     <th className="border border-gray-700 px-4 py-2 text-black font-bold">
+                      Signal
+                    </th>
+                    <th className="border border-gray-700 px-4 py-2 text-black font-bold">
                       Price
                     </th>
                     <th className="border border-gray-700 px-4 py-2 text-black font-bold">
@@ -100,16 +124,19 @@ export default function HomePage() {
                         {index}
                       </td>
                       <td className="border border-gray-700 px-4 py-2 font-medium">
-                        {item.symbol || "Loading..."}
+                        {item.Symbol || "Loading..."}
                       </td>
                       <td className="border border-gray-700 px-4 py-2 font-medium">
-                        {item.price || "Loading..."}
+                        {item.Signal || "Loading..."}
+                      </td>
+                      <td className="border border-gray-700 px-4 py-2 font-medium">
+                        {item.Price || "Loading..."}
                       </td>
                       <td className="border border-gray-700 px-4 py-2 font-medium">
                         {item.type || "Loading..."}
                       </td>
                       <td className="border border-gray-700 px-4 py-2 font-medium">
-                        {item.time || "Loading..."}
+                        {item.Time || "Loading..."}
                       </td>
                     </tr>
                   ))}

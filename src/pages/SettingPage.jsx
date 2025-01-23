@@ -8,33 +8,12 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Message } from "../components";
-
+import { useNavigate } from "react-router";
 const SettingPage = () => {
+  const navigate=useNavigate();
   const [data, setData] = useState({});
   const [alert, setAlert] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/getkeys");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const result = await response.json();
-        setData(result);
-        console.log(result);
-      } catch (error) {
-        setAlert({
-          message: "Error",
-          description: error.message,
-          type: "error",
-        });
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -48,12 +27,15 @@ const SettingPage = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
         setAlert({
           message: "Success",
           description: "API Key added successfully",
           type: "success",
         });
+     
+      setTimeout(() => {
+      navigate('/');
+    }, 2000);
       })
       .catch((error) => {
         setAlert({
@@ -91,7 +73,7 @@ const SettingPage = () => {
         <CardHeader
           variant="gradient"
           color="white"
-          className="h-16 place-items-center rounded-full bg-gradient-to-r from-[#B4B8BB] via-[white] to-[#B4B8BB]"
+          className="h-16 flex flex-col justify-center items-center rounded-full bg-gradient-to-r from-[#B4B8BB] via-[white] to-[#B4B8BB]"
         >
           <Typography color="black" className="text-lg sm:text-xl font-sans">
             Keys Management
