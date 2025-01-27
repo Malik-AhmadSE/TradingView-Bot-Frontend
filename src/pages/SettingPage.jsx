@@ -25,7 +25,8 @@ const SettingPage = () => {
       },
       body: JSON.stringify(values),
     })
-      .then((response) => response.json())
+      .then((response) => 
+        {response.json()})
       .then((data) => {
         setAlert({
           message: "Success",
@@ -168,13 +169,13 @@ const SettingPage = () => {
                       message: "Please input the quantity!",
                     },
                     {
-                      type: "number",
+                      type: "text",
                       min: 1,
                       message: "Quantity must be a positive number",
                     },
                   ]}
                 >
-                  <InputNumber min={1} className="p-2 border-black w-full" />
+                  <Input min={1} className="p-2 border-black w-full" />
                 </Form.Item>
 
                 <Form.Item label={null}>
