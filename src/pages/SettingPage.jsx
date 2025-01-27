@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Radio, Form, Input } from "antd";
+import React, { useState } from "react";
+import { Radio, Form, Input, InputNumber } from "antd";
 import {
   Button,
   Card,
@@ -10,7 +10,7 @@ import {
 import { Message } from "../components";
 import { useNavigate } from "react-router";
 const SettingPage = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [data, setData] = useState({});
   const [alert, setAlert] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
@@ -32,10 +32,10 @@ const SettingPage = () => {
           description: "API Key added successfully",
           type: "success",
         });
-     
-      setTimeout(() => {
-      navigate('/');
-    }, 2000);
+
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       })
       .catch((error) => {
         setAlert({
@@ -157,6 +157,24 @@ const SettingPage = () => {
                       Future
                     </Radio>
                   </Radio.Group>
+                </Form.Item>
+
+                <Form.Item
+                  label={<span className="text-black">Quantity</span>}
+                  name="quantity"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input the quantity!",
+                    },
+                    {
+                      type: "number",
+                      min: 1,
+                      message: "Quantity must be a positive number",
+                    },
+                  ]}
+                >
+                  <InputNumber min={1} className="p-2 border-black w-full" />
                 </Form.Item>
 
                 <Form.Item label={null}>
