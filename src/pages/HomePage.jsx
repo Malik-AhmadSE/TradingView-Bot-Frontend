@@ -15,7 +15,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/getkeys");
+        const response = await fetch("http://backend.primexauto.com/api/getkeys");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }else{
@@ -31,7 +31,7 @@ export default function HomePage() {
     fetchData();
   }, []);
   useEffect(() => {
-    const socket = io("http://localhost:5000");
+    const socket = io("http://backend.primexauto.com");
     socket.on("connect", () => console.log("Socket.IO connection established"));
     socket.on("data", (data) => {setSymbolData(data.data)});
     socket.on("error", (error) => console.error("Socket.IO error:", error));

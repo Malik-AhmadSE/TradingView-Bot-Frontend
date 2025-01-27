@@ -17,7 +17,7 @@ const SettingPage = () => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    const apiUrl = "http://localhost:5000/api/postkey";
+    const apiUrl = "http://backend.primexauto.com/api/postkey";
     fetch(apiUrl, {
       method: "POST",
       headers: {
